@@ -1,3 +1,6 @@
+/* IOGS Orange  	rgb(255, 150, 10);		*/
+/* IOGS Violet 		rgb(10, 50, 80);  		*/
+
 /* Index */
 html,
 body {
@@ -21,7 +24,7 @@ body {
 
 .index-footer{
 	/* Container */
-	background: rgb(10, 50, 80);  	/* IOGS Violet */
+	background: rgb(10, 50, 80); 
 	display: block;
 	height: 40px;
 	width: 1200px;
@@ -45,7 +48,7 @@ body {
 	text-align: center;
 	vertical-align: middle;
 	font-size: 20px;
-	color: rgb(255, 150, 10);		/* IOGS Orange */
+	color: white;
 }
 
 /* Main section */
