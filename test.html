@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Index of List Item</title>
+</head>
+<body>
+
+<ul id="myList">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+</ul>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Sélectionnez la liste <ul>
+    var ulList = document.getElementById("myList");
+
+    // Ajoutez un écouteur d'événements "click" à la liste <ul>
+    ulList.addEventListener("click", function(event) {
+        // Vérifiez si l'élément cliqué est un <li>
+        if (event.target.tagName === "LI") {
+            // Récupérez tous les éléments <li> de la liste
+            var listItems = Array.from(ulList.getElementsByTagName("li"));
+
+            // Récupérez l'index de l'élément cliqué en utilisant la fonction indexOf
+            var index = listItems.indexOf(event.target);
+
+            // Affichez l'index de l'élément cliqué
+            console.log("Index de l'élément cliqué : " + index);
+        }
+    });
+});
+</script>
+
+</body>
+</html>

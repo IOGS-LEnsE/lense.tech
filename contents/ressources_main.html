@@ -10,7 +10,6 @@
 		
 		<link href="../assets/css/ressources_content.css" rel="stylesheet" >
 		<link href="../assets/css/fontawesome/css/all.css" rel="stylesheet" >
-		<link href="../assets/css/font.css" rel="stylesheet" >
     
   
 	</head>
@@ -37,9 +36,8 @@
 			<div class="main-container">
 				<!-- MENU ON THE LEFT -->
 				<div class="main-item menu-item">
-					<ul class="nav-left">
+					<ul class="nav-left" id="mymenu">
 						<li class="returned"><a href="../contents/ressources_main.html">Ressources</a></li>
-						<li></li>
 						<li><a href="#">Photonics A</a></li>
 						<li><a href="#">Photonics B</a></li>
 						<li><a href="#">Analog Electronics</a></li>
@@ -57,6 +55,30 @@
 			</div>
 		</section>
     
+
+	<script>
+	document.addEventListener("DOMContentLoaded", function() {
+		// Select the left menu
+		var ulList = document.getElementById("mymenu");
+		// Add an event listener on the mouse click
+		ulList.addEventListener("click", function(event) {
+			// Check if the clicked element is an <a>
+			if (event.target.tagName === "A") {
+				// Get all the <a> elements
+				var listItems = Array.from(ulList.getElementsByTagName("a"));
+				// Get the index of the clicked element
+				var index = listItems.indexOf(event.target);
+				
+				console.log("Index de l'élément cliqué : " + index);
+				
+				if(index == 0){
+					console.log('Main');
+				}
+			}
+		});
+	});
+	</script>
+
 
 	</body>
 </html>
