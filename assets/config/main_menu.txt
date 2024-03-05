@@ -1,0 +1,6 @@
+LEnsE.tech:../contents/index_content.html:
+Platforms:../contents/platforms_main.html:
+Ressources:../contents/ressources_main.html:
+Procedures:../contents/procedures_main.html:
+Training:../contents/training_main.html:
+About:../contents/about_main.html:

@@ -1,39 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Get Index of List Item</title>
+    <title>Lecture de fichier texte depuis le serveur en JavaScript</title>
 </head>
 <body>
+    <button id="loadFileBtn">Charger le fichier</button>
+    <pre id="fileContent"></pre>
 
-<ul id="myList">
-    <li>Item 1</li>
-    <li>Item 2</li>
-    <li>Item 3</li>
-</ul>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Sélectionnez la liste <ul>
-    var ulList = document.getElementById("myList");
-
-    // Ajoutez un écouteur d'événements "click" à la liste <ul>
-    ulList.addEventListener("click", function(event) {
-        // Vérifiez si l'élément cliqué est un <li>
-        if (event.target.tagName === "LI") {
-            // Récupérez tous les éléments <li> de la liste
-            var listItems = Array.from(ulList.getElementsByTagName("li"));
-
-            // Récupérez l'index de l'élément cliqué en utilisant la fonction indexOf
-            var index = listItems.indexOf(event.target);
-
-            // Affichez l'index de l'élément cliqué
-            console.log("Index de l'élément cliqué : " + index);
-        }
-    });
-});
-</script>
-
+    <script>
+        document.getElementById('loadFileBtn').addEventListener('click', function() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        document.getElementById('fileContent').textContent = xhr.responseText;
+                    } else {
+                        console.error('Une erreur s\'est produite lors du chargement du fichier.');
+                    }
+                }
+            };
+            xhr.open('GET', './assets/config/main_menu.txt', true);
+            xhr.send();
+        });
+    </script>
 </body>
 </html>

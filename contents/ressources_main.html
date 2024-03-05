@@ -10,6 +10,7 @@
 		
 		<link href="../assets/css/ressources_content.css" rel="stylesheet" >
 		<link href="../assets/css/fontawesome/css/all.css" rel="stylesheet" >
+		<script type="text/javascript" src="../assets/js/menu_ressources.js" defer></script>
     
   
 	</head>
@@ -18,6 +19,14 @@
 			<div></div>
 		</header>
     
+		<script>	
+			const fs = require('fs')
+			fs.readFile('../assets/config/main_menu.txt', (err, inputD) => {
+				if (err) throw err;
+				console.log(inputD.toString());
+		})
+		</script>
+		
 		<ul class="navigation">
 			<li><a href="../contents/index_content.html">LEnsE.tech</a></li>
 			<li><a href="../contents/platforms_main.html">Platforms</a></li>
@@ -57,26 +66,7 @@
     
 
 	<script>
-	document.addEventListener("DOMContentLoaded", function() {
-		// Select the left menu
-		var ulList = document.getElementById("mymenu");
-		// Add an event listener on the mouse click
-		ulList.addEventListener("click", function(event) {
-			// Check if the clicked element is an <a>
-			if (event.target.tagName === "A") {
-				// Get all the <a> elements
-				var listItems = Array.from(ulList.getElementsByTagName("a"));
-				// Get the index of the clicked element
-				var index = listItems.indexOf(event.target);
-				
-				console.log("Index de l'élément cliqué : " + index);
-				
-				if(index == 0){
-					console.log('Main');
-				}
-			}
-		});
-	});
+
 	</script>
 
 
