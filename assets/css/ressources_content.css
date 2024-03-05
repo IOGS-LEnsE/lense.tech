@@ -4,6 +4,7 @@
   --iogs-orange: rgb(255, 150, 10);
   --iogs-violet: rgb(10, 50, 80);
   --background: rgb(217, 128, 78);	
+  --background-light: rgba(217, 128, 78, 0.8);	
 }
 
 /* Main */
@@ -13,9 +14,11 @@ body {
 	border-radius: 0;
 }
 
-ul{
+ul, p{
 	padding: 0;
+	margin: 0;
 }
+
 
 
 
@@ -102,10 +105,62 @@ ul{
 .menu-item{
 	width:	300px;
 }
+
+/* NEW NEW NEW */
 .description-item{
-	width:	calc(100% - 300px);
+	width:	calc(100% - 360px);
+	padding: 10px 10px 10px 50px;
 }
 
+.description-item .description{
+	font-family: system-ui;
+	font-size: 1.5em;
+	color: black;
+	margin-bottom: 20px;
+}
+.description-item .sub-list{
+	font-family: system-ui;
+	font-size: 1.2em;
+}
+
+.description-item .sub-list .sub-item{
+	background: var(--background-light);
+	padding: 5px;
+	margin: 0px;
+	margin-left: 20px;
+	border-radius: 10px;
+	list-style: none;
+	color: white;
+}
+.description-item .sub-list .sub-item:hover{
+	background: var(--iogs-violet);
+}
+.description-item .sub-list .sub-item a{
+	text-decoration: none;
+	padding-left: 10px;
+	font-weight: bold;
+	color: white;
+}
+.description-item .sub-list .sub-item .desc{
+	text-decoration: none;
+	padding-left: 50px;
+	font-size: 1em;
+	font-weight: normal;
+}
+
+.icon::before {
+/* removed font- based rules */
+	display: inline-block;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+}
+.gitlink::before {
+	/* using style CSS custom property */
+	font: var(--fa-font-brands);
+	content: "\f09b \00a0\00a0";
+}
+
+/* END NEW NEW NEW */
 
 /* left menu */
 .nav-left {
@@ -129,7 +184,7 @@ ul{
 	border: 2px solid var(--background);
 }
 .nav-left a::before{
-	font-family: "Font Awesome 5 Free";
+	font-family: "Font Awesome 6 Free";
 	content: "\f101 \00a0\00a0";
 }
 
@@ -137,6 +192,26 @@ ul{
 	background: var(--iogs-violet);
 	border: 2px solid var(--iogs-violet);
 	border-radius: 5px 50px 20px 5px;
+}
+
+.nav-left .return a{
+	background: lightgray;
+	color: var(--iogs-violet);
+	border: 2px solid var(--iogs-violet);
+}
+.nav-left .return a::before{
+	font-family: "Font Awesome 6 Free";
+	content: "\f100 \00a0\00a0";
+}
+
+.nav-left .returned a{
+	background: white;
+	color: var(--background);
+	border: 2px solid var(--background);
+}
+.nav-left .returned a::before{
+	font-family: "Font Awesome 6 Free";
+	content: "\f103 \00a0\00a0";
 }
 
 .nav-left .selected a{
