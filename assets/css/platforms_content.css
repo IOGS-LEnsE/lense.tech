@@ -4,7 +4,11 @@
   --iogs-orange: rgb(255, 150, 10);
   --iogs-violet: rgb(10, 50, 80);
   --background: rgb(11, 43, 82);	
-  --background-light: rgba(11, 43, 82, 0.8);	
+  --background-light: rgba(11, 43, 82, 0.7);	
+  --ressources: rgb(217, 128, 78);
+  --ressources-light: rgba(217, 128, 78, 0.8);
+  --training: rgb(52, 162, 189);	
+  --training-light: rgba(52, 162, 189, 0.8);	
 }
 
 /* Main */
@@ -125,8 +129,8 @@ ul{
 	font-size: 1.2em;
 }
 
-.description-item .sub-list .sub-item{
-	background: var(--background-light);
+.sub-link{
+	background: var(--background);
 	padding: 5px;
 	margin: 0px;
 	margin-left: 20px;
@@ -134,20 +138,54 @@ ul{
 	list-style: none;
 	color: white;
 }
-.description-item .sub-list .sub-item:hover{
-	background: var(--iogs-violet);
+.sub-link:hover{
+	background: var(--background-light);
 }
-.description-item .sub-list .sub-item a{
+.sub-link a{
 	text-decoration: none;
 	padding-left: 10px;
 	font-weight: bold;
-	color: white;
+	color: white;	
 }
-.description-item .sub-list .sub-item .desc{
+.description-item .sub-list .sub-item .sub-link .desc{
 	text-decoration: none;
 	padding-left: 50px;
-	font-size: 1em;
+	font-size: 0.8em;
 	font-weight: normal;
+}
+.description-item .sub-list .sub-item .sub-links{
+	display: flex;
+	flex-flow: row wrap;
+	margin-left: 50px;
+	margin-top: 10px;
+}
+a.sub-ressources{
+	background: var(--ressources);
+	padding: 2px 10px 2px 10px;
+	margin-left: 10px;
+	border-radius: 5px;
+	list-style: none;
+	text-decoration: none;
+	color: white;	
+	font-size: 0.6em;
+}
+a.sub-ressources:hover{
+	background: var(--ressources-light);
+}
+
+
+a.sub-training{
+	background: var(--training);
+	padding: 2px 10px 2px 10px;
+	margin-left: 10px;
+	border-radius: 5px;
+	list-style: none;
+	text-decoration: none;
+	color: white;	
+	font-size: 0.6em;
+}
+a.sub-training:hover{
+	background: var(--training-light);
 }
 
 .icon::before {
@@ -156,7 +194,7 @@ ul{
 	text-rendering: auto;
 	-webkit-font-smoothing: antialiased;
 }
-.gitlink::before {
+a.gitlink::before {
 	/* using style CSS custom property */
 	font: var(--fa-font-brands);
 	content: "\f09b \00a0\00a0";
