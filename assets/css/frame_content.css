@@ -1,5 +1,15 @@
-/* IOGS Orange  	rgb(255, 150, 10);		*/
-/* IOGS Violet 		rgb(10, 50, 80);  		*/
+:root {
+  --iogs-orange: rgb(255, 150, 10);
+  --iogs-violet: rgb(10, 50, 80);
+  --platforms: rgb(11, 43, 82);	
+  --platforms-light: rgba(11, 43, 82, 0.7);	
+  --ressources: rgb(217, 128, 78);
+  --ressources-light: rgba(217, 128, 78, 0.8);
+  --training: rgb(52, 162, 189);	
+  --training-light: rgba(52, 162, 189, 0.8);
+  --procedures: rgb(47, 167, 96);
+  --procedures-light: rgba(47, 167, 96, 0.8);
+}
 
 /* Main */
 html,
