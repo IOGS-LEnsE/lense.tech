@@ -73,9 +73,7 @@ function createMainMenu(page){
 			// Set the root variables - COLOR
 			document.documentElement.style.setProperty('--'+myMainMenuItem[1]+'', 'rgb('+myMainMenuItem[2]+')');
 			document.documentElement.style.setProperty('--'+myMainMenuItem[1]+'-light', 'rgba('+myMainMenuItem[2]+', 0.7)');			
-			
-			console.log('COLOR OK');
-			
+						
 			// Create a LI element in the mainmenu UL
 			el = document.createElement('li');
 			

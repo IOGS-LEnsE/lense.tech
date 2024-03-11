@@ -13,10 +13,13 @@ body {
 .frame-title h1{
 	padding: 5px 5px 5px 10px;
 	font-family: 'Audiowide';
-	font-weight: normal;	
+	font-weight: normal;
+	font-size: 20px;	
 	display: block;
 	color: white;
 }
+
+
 
 /* Main section */
 .frame-section{
@@ -51,5 +54,98 @@ body {
 	padding: 5px;
 	margin: 5px;
 	border-radius: 10px;
+	color: white;
+}
+.content-item a {
+	text-decoration: none;
+	padding: 5px;
+	margin: 10px;
+	border-radius: 10px;
+	color: white;
+}
+.content-item a:hover {
+	background: black;
+	color: lightgray;
 }
 
+/* List of items*/
+.sub-link{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	border-radius: 15px;
+	padding: 5px;
+	margin: 5px 5px 5px 10px;
+	list-style: none;
+}
+.sub-link:hover{
+	background: darkgray;
+}
+.sub-link-desc{
+	display: flex;
+	flex-flow: column wrap;
+	color: white;
+	width: auto;
+	max-width: 500px;	
+}
+.sub-link-desc a{
+	text-decoration: none;
+	padding-left: 10px;
+	font-weight: bold;
+	color: white;	
+}
+.sub-link-img{
+	height: 150px;
+	margin: 0px;
+	margin-left: 20px;
+	border-radius: 15px;
+	list-style: none;
+	color: white;
+	border: 5px solid white;
+	background: white;
+}
+
+.sub-link-img img{
+	height: 150px;
+	max-width: 200px;
+	border-radius: 10px;
+}
+
+.sub-item .sub-link-desc .desc{
+	text-decoration: none;
+	padding-left: 50px;
+	font-size: 0.8em;
+	font-weight: normal;
+}
+.sub-item .sub-links{
+	display: flex;
+	flex-flow: row wrap;
+	margin-left: 50px;
+	margin-top: 10px;
+}
+a.sub-ressources{
+	background: var(--ressources);
+	padding: 2px 10px 2px 10px;
+	margin-left: 10px;
+	margin-top: 2px;
+	border-radius: 5px;
+	list-style: none;
+	text-decoration: none;
+	color: white;	
+	font-size: 0.6em;
+}
+a.sub-ressources:hover{
+	background: var(--ressources-light);
+}
+
+.icon::before {
+/* removed font- based rules */
+	display: inline-block;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+}
+a.gitlink::before {
+	/* using style CSS custom property */
+	font: var(--fa-font-brands);
+	content: "\f09b \00a0\00a0";
+}

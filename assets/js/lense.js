@@ -19,7 +19,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	if(Object.keys(pages).length == 2){
 		subpage = pages[1];
 	}
-		
+	
+	// Create main colors rgb(10, 50, 80)
+	document.documentElement.style.setProperty('--iogs-violet', 'rgb(10, 50, 80)');
+	document.documentElement.style.setProperty('--iogs-violet-light', 'rgba(10, 50, 80, 0.7)');
+	document.documentElement.style.setProperty('--iogs-orange', 'rgb(255, 150, 10)');
+	document.documentElement.style.setProperty('--iogs-orange-light', 'rgba(255, 150, 10, 0.7)');
+	
 	// Create the Main Menu from main_menu.txt
 	var mainMenuList = {};
 	var mainRgbList = {};
