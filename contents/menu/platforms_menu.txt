@@ -1,0 +1,7 @@
+MenuName:link:
+Platforms:return:
+Photonics A:phtA:
+Photonics B:phtB:
+Lights:lights:
+Robotics:robots:
+Industrial application:indusapp:

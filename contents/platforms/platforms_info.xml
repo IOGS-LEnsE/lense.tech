@@ -1,0 +1,16 @@
+<Document>
+	<Informations>
+		<Title>Platforms</Title>
+		<Description>Description</Description>
+		<Descriptors>
+			<Descriptor>
+				<Type>GitHub</Type>
+				<Desc>Most of the available platforms are described and documented in the GitHub organization:</Desc> 
+				<Link>
+					<Url>https://github.com/IOGS-LEnsE-platforms</Url>
+					<Name>IOGS-LEnsE-platforms</Name>
+				</Link>
+			</Descriptor>
+		</Descriptors>
+	</Informations>
+</Document>

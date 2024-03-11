@@ -1,0 +1,7 @@
+MenuName:link:R,G,B:
+LEnsE.tech:index:52, 52, 52:
+Platforms:platforms:227, 66, 52:
+Ressources:ressources:255, 141, 0:
+Procedures:procedures:47, 167, 96:
+Training:training:52, 162, 189:
+About:about:0, 128, 128:

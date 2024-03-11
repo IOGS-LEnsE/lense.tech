@@ -1,0 +1,186 @@
+/* CSS File for Index */
+
+:root {
+  --iogs-orange: rgb(255, 150, 10);
+  --iogs-violet: rgb(10, 50, 80);
+  --platforms: rgb(11, 43, 82);	
+  --platforms-light: rgba(11, 43, 82, 0.7);	
+  --ressources: rgb(217, 128, 78);
+  --ressources-light: rgba(217, 128, 78, 0.8);
+  --training: rgb(52, 162, 189);	
+  --training-light: rgba(52, 162, 189, 0.8);
+  --procedures: rgb(47, 167, 96);
+  --procedures-light: rgba(47, 167, 96, 0.8);
+}
+
+
+/* Index */
+html,
+body {
+	height: 99%;
+	border-radius: 0;
+}
+p{
+	margin: 0;
+	padding: 0;
+}
+
+/* Large screens - larger than 1200 px */
+.page-body {
+	height: calc(100% - 100px);
+	overflow: hidden;
+	text-align: center;
+}
+
+.page-body iframe {
+	border: none;
+	display: inline-block;
+	height: calc(100% - 20px);
+	width: 1200px;
+}
+
+.index-footer{
+	/* Container */
+	background: var(--iogs-violet); 
+	display: block;
+	height: 50px;
+	width: 1200px;
+	margin: 5px auto 5px auto;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.index-footer .footer-link{
+	width: 100%;
+	height: 30px;
+	vertical-align: middle;
+	text-align: center;
+	line-height: 30px;
+	font-family: system-ui;
+	font-size: 20px;
+}
+
+.index-footer .footer-link a{
+	/* Font */
+	text-decoration: none;
+	color: white;
+}
+.index-footer .footer-link-others{
+	width: 100%;
+	height: 20px;
+	vertical-align: middle;
+	text-align: center;
+	line-height: 20px;
+	font-family: system-ui;
+	font-size: 10px;
+	color: white;	
+}
+.index-footer .footer-link-others a{
+	text-decoration: none;
+	color: var(--iogs-orange);
+}
+
+/* Main section */
+.main-section{
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: space-around;
+	padding-top: 80px;
+}
+
+.main-container{
+	display: flex;
+
+	/* Then we define the flow direction and if we allow the items to wrap 
+	* Remember this is the same as:
+	* flex-direction: row;
+	* flex-wrap: wrap;
+	*/
+	flex-flow: row wrap;
+
+	/* Then we define how is distributed the remaining space */
+	justify-content: space-around;
+
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+
+/* Logo */
+.main-item {
+	padding: 5px;
+	height: 100%;
+	text-align: center;
+}
+.first-main-item{
+	width:	500px;
+}
+.second-main-item{
+	width:	600px;
+}
+
+.first-main-item img{
+	width: 100%;
+}
+
+/* 4 areas - square of 2 * 2*/
+.area4-container{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	list-style: none;
+}
+
+
+.area4-item {
+	padding: 5px;
+	width: 280px;
+	color: white;
+	font-weight: bold;
+	font-size: 3em;
+	text-align: center;
+}
+
+.first-item img{
+	width: 100%;
+	border-radius: 40% 30% 10% 60%;
+}
+
+.second-item img{
+	width: 90%;
+	border-radius: 35% 70% 55% 15%;
+}
+
+.third-item img{
+	width: 85%;
+	border-radius: 30% 10% 40% 60%;
+}
+
+.fourth-item img{
+	width: 100%;
+	border-radius: 10% 40% 50% 60%;
+}
+
+.area4-item img:hover {
+	opacity: 0.8;
+	-moz-transform:scale(1.1);
+	-ms-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	transform: scale(1.1);
+}
+
+/* Screens from 900 px to 1200 px */
+@media (max-width: 1199px) {
+	.page-body iframe {
+		border: none;
+		display: inline-block;
+		height: 600px;
+		width: 800px;
+	}	
+}
+
