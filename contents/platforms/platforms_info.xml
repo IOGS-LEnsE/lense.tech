@@ -1,7 +1,8 @@
 <Document>
 	<Informations>
 		<Title>Platforms</Title>
-		<Description>Description</Description>
+		<Description>Pedagogic platforms designed by the LEnsE.</Description>
+		
 		<Descriptors>
 			<Descriptor>
 				<Type>GitHub</Type>
@@ -12,5 +13,6 @@
 				</Link>
 			</Descriptor>
 		</Descriptors>
+		
 	</Informations>
 </Document>

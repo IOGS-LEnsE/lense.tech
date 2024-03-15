@@ -89,3 +89,15 @@ function fileExists(url) {
         return false;
     }
 }
+
+/**
+ * parseXML ...
+ * @param  {str} file Url to the XML file to parse
+ * @return {str}      parsed content of the file
+ */
+function parseXML(file){
+	xmlString = readFile(file);
+	const parser = new DOMParser();
+	const xmlDoc = parser.parseFromString(xmlString, "text/xml");
+	return xmlDoc;
+}

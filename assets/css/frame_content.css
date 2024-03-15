@@ -4,7 +4,6 @@
 /* Main */
 html,
 body {
-	height: 99%;
 	border-radius: 0;
 }
 
@@ -29,6 +28,13 @@ body {
 	padding-top: 10px;
 }
 
+.frame-description{
+	font-family: system-ui;
+	font-weight: normal;
+	font-size: 1.3em;
+	padding: 5px 5px 5px 10px;
+}
+
 .frame-container{
 	display: flex;
 
@@ -45,6 +51,7 @@ body {
 	padding: 10px;
 	margin: 0;
 	list-style: none;
+	width: calc(100%-20px);
 }
 
 /* List of items */
@@ -68,8 +75,12 @@ body {
 	color: lightgray;
 }
 
+
+
+
 /* List of items*/
 .sub-link{
+	width: 100%;
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
@@ -78,15 +89,13 @@ body {
 	margin: 5px 5px 5px 10px;
 	list-style: none;
 }
-.sub-link:hover{
+.sub-link-data:hover{
 	background: darkgray;
 }
 .sub-link-desc{
 	display: flex;
 	flex-flow: column wrap;
-	color: white;
-	width: auto;
-	max-width: 500px;	
+	width: calc(100%-10px);	
 }
 .sub-link-desc a{
 	text-decoration: none;
@@ -111,6 +120,21 @@ body {
 	border-radius: 10px;
 }
 
+
+/* Information description */
+p.desc-info{
+	font-family: system-ui;
+	font-weight: normal;
+	font-size: 1.1em;
+}
+/* Information description */
+p.desc{
+	font-family: system-ui;
+	font-weight: normal;
+	font-size: 1.1em;
+}
+
+/* Item of the list */
 .sub-item .sub-link-desc .desc{
 	text-decoration: none;
 	padding-left: 50px;
@@ -144,7 +168,16 @@ a.sub-ressources:hover{
 	text-rendering: auto;
 	-webkit-font-smoothing: antialiased;
 }
-a.gitlink::before {
+/* Inside link of informations */
+a.link {
+	font-family: system-ui;
+	font-weight: normal;
+	font-size: 1.1em;
+	text-decoration: none;
+	padding: 2px 10px 2px 10px;
+	border-radius: 10px;
+}
+a.git::before {
 	/* using style CSS custom property */
 	font: var(--fa-font-brands);
 	content: "\f09b \00a0\00a0";

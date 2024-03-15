@@ -8,6 +8,11 @@
 
 /**
  * openFrame update frame content depending on XML files
+ *	if main page	
+ *		page_info.xml	/ Information and description
+ * 	if subpage
+ * 		page_subpage_info.xml 	/ Information and description 
+ * 		page_subpage.xml  		/ Items
  * @param  {str} page Name of the page to open in the frame
  * @param  {str} subpage Name of the subpage to open in the frame
  */
@@ -16,7 +21,6 @@ function openFrame(page, subpage){
 	var fileNameData = '';
 	var xmlString = '';
 	var is_main_subpage = false;
-	var mySubFrame = document.getElementById('content-frame');
 	
 	// main subsection page
 	if (subpage.includes('return')){
@@ -30,118 +34,20 @@ function openFrame(page, subpage){
 	}	
 	// Test if informations file exists
 	if(fileExists(fileNameInfo)){
-		xmlString = readFile(fileNameInfo);
+		const xmlDoc = parseXML(fileNameInfo);
+		autoGenerateInfoStructure(page, subpage, xmlDoc);
 	}
 	else{
 		var message = 'Page : '+page+'/'+subpage+' not yet implemented';
-		createErrorPage(message, page, mySubFrame);		
+		createErrorPage(message, page);		
 		return;
 	}
-
-	// Informations
-	const parser = new DOMParser();
-	const xmlDoc = parser.parseFromString(xmlString, "text/xml");
-	var infos = xmlDoc.getElementsByTagName("Informations");
 	
-	var title = infos[0].querySelector("Title").textContent;
-	var description = infos[0].querySelector("Description").textContent;
-	
-	const mySubTitle = mySubFrame.contentDocument.getElementById('frame-title');
-	mySubTitle.style.background = document.documentElement.style.getPropertyValue('--'+page);
-	if(is_main_subpage){
-		mySubTitle.style.display = 'None';
-	}
-	else{
-		mySubTitle.style.display = 'block';
-		mySubTitle.innerHTML = '<h1>'+title+'</h1>';
-	}
-	const mySubDecription = mySubFrame.contentDocument.getElementById('frame-description');
-	mySubDecription.innerHTML = description;
-	
-	// Descriptors
-	var descriptors = infos[0].getElementsByTagName("Descriptor");
-	
-	const mySubItems = mySubFrame.contentDocument.getElementById('frame-items');
-	autoGenerateInfoStructure(mySubItems, descriptors, page);
-	
-	/*
-	
-	const myContentItems = mySubFrame.contentDocument.getElementById("content-item");
-	myContentItems.innerHTML = '';
-		
-	for (var j = 0; j < descriptors.length; j++) {
-		var descriptor = descriptors[j];
-		el = document.createElement('li');
-		// Access descriptor properties
-		var type = descriptor.querySelector("Type").textContent;
-		var desc = descriptor.querySelector("Desc").textContent;
-		var url = descriptor.querySelector("Link > Url").textContent;
-		var name = descriptor.querySelector("Link > Name").textContent;
-		// Create the element
-		ael = document.createElement('a');
-		// Create the text node for anchor element.
-		var linke = document.createTextNode(name);
-		// Append the text node to anchor element.
-		ael.appendChild(linke); 
-		ael.title = name;
-		ael.href = url;
-		ael.style.background = document.documentElement.style.getPropertyValue('--iogs-violet');
-		el.innerHTML = desc+'<br />';
-		el.append(ael);
-		el.style.background = document.documentElement.style.getPropertyValue('--'+page);
-		// Add the element into the list
-		myContentItems.appendChild(el);
-		
-	}
-	
-	/*
-	
-	    // Parse the XML string
-    var parser = new DOMParser();
-    var xmlDoc = parser.parseFromString(xmlString, "text/xml");
-
-    // Accessing XML nodes
-    var informations = xmlDoc.getElementsByTagName("Informations");
-
-    // Loop through each Informations element
-    for (var i = 0; i < informations.length; i++) {
-        var information = informations[i];
-        
-        // Access information properties
-        var title = information.querySelector("Title").textContent;
-        var description = information.querySelector("Description").textContent;
-        console.log("Information Title:", title);
-        console.log("Information Description:", description);
-
-        // Access Descriptors for each Informations element
-        var descriptors = information.getElementsByTagName("Descriptor");
-        
-        // Loop through each descriptor
-        for (var j = 0; j < descriptors.length; j++) {
-            var descriptor = descriptors[j];
-
-            // Access descriptor properties
-            var type = descriptor.querySelector("Type").textContent;
-            var desc = descriptor.querySelector("Desc").textContent;
-            var url = descriptor.querySelector("Link > Url").textContent;
-            var name = descriptor.querySelector("Link > Name").textContent;
-
-            // Log descriptor details
-            console.log("Type:", type);
-            console.log("Description:", desc);
-            console.log("URL:", url);
-            console.log("Name:", name);
-            console.log("--------------------------------");
-        }
-    }
-	
-	*/
-	
-	
-	if(is_main_subpage){
+	if(!is_main_subpage){
 		// Data from other subpages (non main)
 		if(fileExists(fileNameData)){
-			xmlString = readFile(fileNameData);
+			const xmlDoc = parseXML(fileNameData);
+			autoGenerateDataStructure(page, subpage, xmlDoc);
 		}
 		else{
 			var message = 'Page : '+page+'/'+subpage+' not yet implemented';
@@ -149,246 +55,291 @@ function openFrame(page, subpage){
 			return;
 		}
 	}
-	
-	// TO COMPLETE
-
-	/*
-    // Loop through each 'Informations' node
-    for (var i = 0; i < infos.length; i++) {
-        var title = infos[i].querySelector("Title").textContent;
-        var description = infos[i].querySelector("Description").textContent;
-
-        // Log the title and description for each 'Informations' node
-        console.log("Title:", title);
-        console.log("Description:", description);
-    }
-	*/
 }
 
-function autoGenerateInfoStructure(frameItemsObject, descriptors, page){
-	console.log("AutoGen");
-	frameItemsObject.innerHTML = '';
-	// Create the div with class "sub-link"
-	var subLink = document.createElement("div");
-	subLink.classList.add("sub-link");
-	subLink.style.background = document.documentElement.style.getPropertyValue('--'+page);
-	// Change background with mouse entering or leaving the area
-	subLink.addEventListener("mouseenter", function( event ) {   
-	  event.target.style.background = document.documentElement.style.getPropertyValue('--'+page+'-light');
-	}, false);
-	subLink.addEventListener("mouseleave", function( event ) {   
-	  event.target.style.background = document.documentElement.style.getPropertyValue('--'+page);
-	}, false);
-	
-	// Create the div with class "sub-link-desc"
-	var subLinkDesc = document.createElement("div");
-	subLinkDesc.classList.add("sub-link-desc");
-
-	// Create the inner div
-	var innerDiv = document.createElement("div");
-
-	// Create the anchor element with class "gitlink"
-	var anchorD = document.createElement("a");
-	
-	// Read descriptors !
-	for (var j = 0; j < descriptors.length; j++) {
-		var descriptor = descriptors[j];
-		el = document.createElement('li');
-		// Access descriptor properties
-		var type = descriptor.querySelector("Type").textContent;
-		var desc = descriptor.querySelector("Desc").textContent;
-		var url = descriptor.querySelector("Link > Url").textContent;
-		var urlName = descriptor.querySelector("Link > Name").textContent;
-		
-		// Create the paragraph element with class "desc"
-		var desc = document.createElement("p");
-		desc.classList.add("desc");
-		desc.textContent = desc;
-		
-		console.log('ERREUR AVEC AFFICHAGE DESC');
-		// Append paragraph to anchor
-		anchorD.appendChild(desc);
-		
-		// TO CHANGE !! FOR DIFFERENT TYPES !!
-		anchorD.classList.add("gitlink");
-		
-		anchorD.href = url;
-		anchorD.target = "_blank";
-		anchorD.textContent = urlName;
-		
+/**
+ * autoGenerateInfoStructure update frame content depending on XML files
+ *	if main page	
+ *		page_info.xml	/ Information and description
+ * 	if subpage
+ * 		page_subpage_info.xml 	/ Information and description 
+ *	each info.xml file contains :
+ *		<Informations>
+ *			<Title>
+ *			<Description>
+ *			<Descriptors> / process with processDescriptors method
+ * @param  {str} page Name of the page to open in the frame
+ * @param  {str} subpage Name of the subpage to open in the frame
+ * @param  {str} xmlDoc parsed XML file content
+ */
+function autoGenerateInfoStructure(page, subpage, xmlDoc){
+	// Informations
+	var infos = xmlDoc.getElementsByTagName("Informations");
+	var title = infos[0].querySelector("Title").textContent;
+	var description = infos[0].querySelector("Description").textContent;
+	// Containers
+	var mySubFrame = document.getElementById('content-frame');	
+	// Clear the HTML page
+	const mySubItems = mySubFrame.contentDocument.getElementById('frame-items');
+	mySubItems.innerHTML = '';
+	// Title of the frame
+	const mySubTitle = mySubFrame.contentDocument.getElementById('frame-title');
+	mySubTitle.style.background = document.documentElement.style.getPropertyValue('--'+page);
+	if(subpage.includes('return')){
+		mySubTitle.style.display = 'None';
 	}
-
+	else{
+		mySubTitle.style.display = 'block';
+		mySubTitle.innerHTML = '<h1>'+title+'</h1>';
+	}
+	// Description of the frame
+	const mySubDecription = mySubFrame.contentDocument.getElementById('frame-description');
+	mySubDecription.innerHTML = description;
 	
-	// Append anchor to inner div
-	innerDiv.appendChild(anchorD);
-
-	// Append inner div to sub-link-desc
-	subLinkDesc.appendChild(innerDiv);
-
-	/*
-	// Create the div with class "sub-links"
-	var subLinks = document.createElement("div");
-	subLinks.classList.add("sub-links");
-
-	// Create the anchor elements for sub-links
-	var cameraInterface = document.createElement("a");
-	cameraInterface.classList.add("sub-ressources", "gitlink");
-	cameraInterface.href = "https://iogs-lense-ressources.github.io/camera-gui/";
-	cameraInterface.target = "_blank";
-	cameraInterface.textContent = "Camera Interfaces (Basler, IDS...)";
-
-	var nucleoBasics = document.createElement("a");
-	nucleoBasics.classList.add("sub-training", "gitlink");
-	nucleoBasics.href = "https://iogs-lense-training.github.io/nucleo-basics/";
-	nucleoBasics.target = "_blank";
-	nucleoBasics.textContent = "Nucleo Basics";
-
-	var pythonGUI = document.createElement("a");
-	pythonGUI.classList.add("sub-training", "gitlink");
-	pythonGUI.href = "#"; // Add your link for Python GUI
-	pythonGUI.target = "_blank";
-	pythonGUI.textContent = "Python GUI";
-
-	// Append anchor elements to sub-links
-	subLinks.appendChild(cameraInterface);
-	subLinks.appendChild(nucleoBasics);
-	subLinks.appendChild(pythonGUI);
-
-	// Append sub-links to sub-link-desc
-	subLinkDesc.appendChild(subLinks);
-
-	// Create the div with class "sub-link-img"
-	var subLinkImg = document.createElement("div");
-	subLinkImg.classList.add("sub-link-img");
-
-	// Create the image element
-	var image = document.createElement("img");
-	image.src = "./platforms/machine-vision.png";
-	image.alt = "Machine Vision Picture";
-	
-	// Append image to sub-link-img
-	subLinkImg.appendChild(image);
-	*/
-	// Append sub-link-desc and sub-link-img to sub-link
-	subLink.appendChild(subLinkDesc);
-	//subLink.appendChild(subLinkImg);
-
-	// Append sub-list to the body or any other parent element
-	frameItemsObject.appendChild(subLink);
-
+	// Descriptors
+	var informations = xmlDoc.getElementsByTagName("Informations");
+	if(subpage.includes('return')){
+		processDescriptors(page, subpage, informations[0]);
+	}
+	else{
+		//processDescriptorsData(page, subpage, informations[0]);
+	}
 }
 
 
-function autoGenerateDataStructure(frameItemsObject, descriptors, page){
+/**
+ * processDescriptors update frame content depending on XML files / Descriptors
+ * 		each Descriptor contains:
+ *			<Descriptor>
+ *				<Type>
+ *				<Desc>
+ *				<Link>
+ *					<Url>
+ *					<Name>			
+ * @param  {str} page Name of the page to open in the frame
+ * @param  {str} subpage Name of the subpage to open in the frame
+ * @param  {str} information parsed XML file content / First list of descriptors
+ */
+function processDescriptors(page, subpage, information){	
+	// Descriptors
+	var descriptors = information.getElementsByTagName("Descriptor");
+	// Containers
+	var mySubFrame = document.getElementById('content-frame');	
+	const mySubItems = mySubFrame.contentDocument.getElementById('frame-items');
+
+	mySubItems.innerHTML = '';
+	
+	if(descriptors.length > 0){
+		// Create the div with class "sub-link"
+		var subLink = document.createElement("div");
+		subLink.classList.add("sub-link");
+
+		// Read descriptors !
+		for (var j = 0; j < descriptors.length; j++) {
+			var descriptor = descriptors[j];
+			
+			// Create the div with class "sub-link-desc"
+			var subLinkDesc = document.createElement("div");
+			subLinkDesc.classList.add("sub-link-desc");	
+		
+			// Access descriptor properties
+			var type = descriptor.querySelector("Type").textContent;
+			var description = descriptor.querySelector("Desc").textContent;
+			var url = descriptor.querySelector("Link > Url").textContent;
+			var urlName = descriptor.querySelector("Link > Name").textContent;
+			
+			// Description of the descriptor			
+			var desc = document.createElement("p");
+			desc.classList.add("desc-info");
+			desc.textContent = description;
+			
+			// Create the anchor element with class "gitlink"
+			var anchorD = document.createElement("a");
+			anchorD.style.background = document.documentElement.style.getPropertyValue('--'+page);
+			// Change background with mouse entering or leaving the area
+			anchorD.addEventListener("mouseenter", function( event ) {   
+			  event.target.style.background = document.documentElement.style.getPropertyValue('--'+page+'-light');
+			}, false);
+			anchorD.addEventListener("mouseleave", function( event ) {   
+			  event.target.style.background = document.documentElement.style.getPropertyValue('--'+page);
+			}, false);
+			
+			// TO CHANGE !! FOR DIFFERENT TYPES !!
+			anchorD.classList.add("link");
+			switch(type){
+				case 'GitHub':
+					anchorD.classList.add("git");
+					break;
+				default:
+					anchorD.classList.add("none");
+					
+			}
+			anchorD.href = url;
+			anchorD.target = "_blank";
+			anchorD.textContent = urlName;
+
+			subLinkDesc.appendChild(desc);
+			subLinkDesc.appendChild(anchorD);
+		}
+
+		// Append sub-link-desc and sub-link-img to sub-link
+		subLink.appendChild(subLinkDesc);
+		//subLink.appendChild(subLinkImg);
+
+		// Append sub-list to the body or any other parent element
+		mySubItems.appendChild(subLink);
+	}
+}
+
+
+function autoGenerateDataStructure(page, subpage, xmlDoc){
 	console.log("AutoGenData");
-	// Create the div with class "sub-link"
-	var subLink = document.createElement("div");
-	subLink.classList.add("sub-link");
-	subLink.style.background = document.documentElement.style.getPropertyValue('--'+page);
-	// Change background with mouse entering or leaving the area
-	subLink.addEventListener("mouseenter", function( event ) {   
-	  event.target.style.background = document.documentElement.style.getPropertyValue('--'+page+'-light');
-	}, false);
-	subLink.addEventListener("mouseleave", function( event ) {   
-	  event.target.style.background = document.documentElement.style.getPropertyValue('--'+page);
-	}, false);
+	// Collect Items
+	var items = xmlDoc.getElementsByTagName("Item");
 	
-	// Create the div with class "sub-link-desc"
-	var subLinkDesc = document.createElement("div");
-	subLinkDesc.classList.add("sub-link-desc");
+	// Iteration on items
+	processItems(page, subpage, items);
+}
 
-	// Create the inner div
-	var innerDiv = document.createElement("div");
 
-	// Create the anchor element with class "gitlink"
-	var anchorD = document.createElement("a");
-	
-	// Read descriptors !
-	for (var j = 0; j < descriptors.length; j++) {
-		var descriptor = descriptors[j];
-		el = document.createElement('li');
+/**
+ * processDescriptors update frame content depending on XML files / Descriptors
+ * 		each Descriptor contains:
+ *			<Item>
+ *				<Title>
+ *				<Description>
+ *				<Illustration>
+ *				<Url>
+ *				<Ressources>
+ *					<Resspource>
+ *						<Type>
+ *						<Title>
+ *						<Url>		
+ * @param  {str} page Name of the page to open in the frame
+ * @param  {str} subpage Name of the subpage to open in the frame
+ * @param  {str} items xmlDoc parsed XML file content / List of items
+ */
+function processItems(page, subpage, items){	
+	// Containers
+	var mySubFrame = document.getElementById('content-frame');	
+	const mySubItems = mySubFrame.contentDocument.getElementById('frame-items');
+
+	for(var k = 0; k < items.length; k++){
+		item = items[k];
+		
+		// Create the div with class "sub-link"
+		var subLink = document.createElement("div");
+		subLink.classList.add("sub-link");
+		subLink.classList.add("sub-link-data");
+		
+		var subLinkDesc = document.createElement("div");
+		subLinkDesc.classList.add("sub-link-desc");
+		
+		
 		// Access descriptor properties
 		var type = descriptor.querySelector("Type").textContent;
-		var desc = descriptor.querySelector("Desc").textContent;
+		var description = descriptor.querySelector("Desc").textContent;
 		var url = descriptor.querySelector("Link > Url").textContent;
 		var urlName = descriptor.querySelector("Link > Name").textContent;
 		
+		// Description of the descriptor			
+		var desc = document.createElement("p");
+		desc.classList.add("desc-info");
+		desc.textContent = description;
+			
+			// Create the anchor element with class "gitlink"
+			var anchorD = document.createElement("a");
+			anchorD.style.background = document.documentElement.style.getPropertyValue('--'+page);
+			// Change background with mouse entering or leaving the area
+			anchorD.addEventListener("mouseenter", function( event ) {   
+			  event.target.style.background = document.documentElement.style.getPropertyValue('--'+page+'-light');
+			}, false);
+			anchorD.addEventListener("mouseleave", function( event ) {   
+			  event.target.style.background = document.documentElement.style.getPropertyValue('--'+page);
+			}, false);
+			
+			// TO CHANGE !! FOR DIFFERENT TYPES !!
+			anchorD.classList.add("link");
+			switch(type){
+				case 'GitHub':
+					anchorD.classList.add("git");
+					break;
+				default:
+					anchorD.classList.add("none");
+					
+			}
+			anchorD.href = url;
+			anchorD.target = "_blank";
+			anchorD.textContent = urlName;
+
+			subLinkDesc.appendChild(desc);
+			subLinkDesc.appendChild(anchorD);
 		
-		// TO CHANGE !! FOR DIFFERENT TYPES !!
-		anchorD.classList.add("gitlink");
 		
-		anchorD.href = url;
-		anchorD.target = "_blank";
-		anchorD.textContent = urlName;
+		var anchorD = document.createElement("a");
+		/*
+
+					<a class="gitlink" href="https://iogs-lense-platforms.github.io/machine-vision/" target="_blank">Machine Vision
+					<p class="desc">Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla</p>
+					</a>
+				</div>
+		*/
 		
+		// Append sub-link-desc and sub-link-img to sub-link
+		subLink.appendChild(subLinkDesc);
+		//subLink.appendChild(subLinkImg);
+
+		// Append sub-list to the body or any other parent element
+		mySubItems.appendChild(subLink);
 	}
-	// Create the paragraph element with class "desc"
-	var desc = document.createElement("p");
-	desc.classList.add("desc");
-	desc.textContent = desc;
-	
-	// Append paragraph to anchor
-	anchorD.appendChild(desc);
-	
-	// Append anchor to inner div
-	innerDiv.appendChild(anchorD);
+}	
 
-	// Append inner div to sub-link-desc
-	subLinkDesc.appendChild(innerDiv);
 
-	/*
-	// Create the div with class "sub-links"
-	var subLinks = document.createElement("div");
-	subLinks.classList.add("sub-links");
 
-	// Create the anchor elements for sub-links
-	var cameraInterface = document.createElement("a");
-	cameraInterface.classList.add("sub-ressources", "gitlink");
-	cameraInterface.href = "https://iogs-lense-ressources.github.io/camera-gui/";
-	cameraInterface.target = "_blank";
-	cameraInterface.textContent = "Camera Interfaces (Basler, IDS...)";
+		/*
+		// Create the div with class "sub-links"
+		var subLinks = document.createElement("div");
+		subLinks.classList.add("sub-links");
 
-	var nucleoBasics = document.createElement("a");
-	nucleoBasics.classList.add("sub-training", "gitlink");
-	nucleoBasics.href = "https://iogs-lense-training.github.io/nucleo-basics/";
-	nucleoBasics.target = "_blank";
-	nucleoBasics.textContent = "Nucleo Basics";
+		// Create the anchor elements for sub-links
+		var cameraInterface = document.createElement("a");
+		cameraInterface.classList.add("sub-ressources", "gitlink");
+		cameraInterface.href = "https://iogs-lense-ressources.github.io/camera-gui/";
+		cameraInterface.target = "_blank";
+		cameraInterface.textContent = "Camera Interfaces (Basler, IDS...)";
 
-	var pythonGUI = document.createElement("a");
-	pythonGUI.classList.add("sub-training", "gitlink");
-	pythonGUI.href = "#"; // Add your link for Python GUI
-	pythonGUI.target = "_blank";
-	pythonGUI.textContent = "Python GUI";
+		var nucleoBasics = document.createElement("a");
+		nucleoBasics.classList.add("sub-training", "gitlink");
+		nucleoBasics.href = "https://iogs-lense-training.github.io/nucleo-basics/";
+		nucleoBasics.target = "_blank";
+		nucleoBasics.textContent = "Nucleo Basics";
 
-	// Append anchor elements to sub-links
-	subLinks.appendChild(cameraInterface);
-	subLinks.appendChild(nucleoBasics);
-	subLinks.appendChild(pythonGUI);
+		var pythonGUI = document.createElement("a");
+		pythonGUI.classList.add("sub-training", "gitlink");
+		pythonGUI.href = "#"; // Add your link for Python GUI
+		pythonGUI.target = "_blank";
+		pythonGUI.textContent = "Python GUI";
 
-	// Append sub-links to sub-link-desc
-	subLinkDesc.appendChild(subLinks);
+		// Append anchor elements to sub-links
+		subLinks.appendChild(cameraInterface);
+		subLinks.appendChild(nucleoBasics);
+		subLinks.appendChild(pythonGUI);
 
-	// Create the div with class "sub-link-img"
-	var subLinkImg = document.createElement("div");
-	subLinkImg.classList.add("sub-link-img");
+		// Append sub-links to sub-link-desc
+		subLinkDesc.appendChild(subLinks);
 
-	// Create the image element
-	var image = document.createElement("img");
-	image.src = "./platforms/machine-vision.png";
-	image.alt = "Machine Vision Picture";
-	
-	// Append image to sub-link-img
-	subLinkImg.appendChild(image);
-	*/
-	// Append sub-link-desc and sub-link-img to sub-link
-	subLink.appendChild(subLinkDesc);
-	//subLink.appendChild(subLinkImg);
+		// Create the div with class "sub-link-img"
+		var subLinkImg = document.createElement("div");
+		subLinkImg.classList.add("sub-link-img");
 
-	// Append sub-list to the body or any other parent element
-	frameItemsObject.appendChild(subLink);
-
-}
-
+		// Create the image element
+		var image = document.createElement("img");
+		image.src = "./platforms/machine-vision.png";
+		image.alt = "Machine Vision Picture";
+		
+		// Append image to sub-link-img
+		subLinkImg.appendChild(image);
+		*/
 
 /**
  * createErrorPage update frame content with error description
@@ -398,7 +349,11 @@ function autoGenerateDataStructure(frameItemsObject, descriptors, page){
  * @param  {bool} title True if no title is already displayed, default=true
  */
 function createErrorPage(message, page, subFrame=null, title=true) {
-	console.log(message);
+	// Containers
+	var subFrame = document.getElementById('content-frame');
+	// To clear the HTML page
+	const mySubItems = subFrame.contentDocument.getElementById('frame-items');
+	mySubItems.innerHTML = '';
 	
 	if(subFrame != null){
 		const mySubTitle = subFrame.contentDocument.getElementById('frame-title');

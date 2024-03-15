@@ -4,20 +4,23 @@
 		<Description>Bla bla bla bla bla</Description>
 		<Illustration>machine-vision.png</Illustration>
 		<Url>https://iogs-lense-platforms.github.io/machine-vision/</Url>
-		<Others>
-			<Ressource>				
+		<Ressources>
+			<Ressource>	
+				<Type>ressources</Type>
 				<Title>Cameras GUI</Title>
 				<Url>https://iogs-lense-ressources.github.io/camera-gui/</Url>			
 			</Ressource>
-			<Training>
+			<Ressource>	
+				<Type>training</Type>
 				<Title>Nucleo Basics</Title>
-				<Url>https://iogs-lense-training.github.io/nucleo-basics/</Url>
-			</Training>
-			<Training>
+				<Url>https://iogs-lense-training.github.io/nucleo-basics/</Url>			
+			</Ressource>
+			<Ressource>	
+				<Type>training</Type>
 				<Title>Python GUI</Title>
 				<Url>#</Url>
-			</Training>
-		</Others>
+			</Ressource>
+		</Ressources>
 	</Item>
 	<Item>
 		<Title>Test</Title>

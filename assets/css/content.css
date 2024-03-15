@@ -96,7 +96,7 @@ iframe{
 }
 
 .description-item iframe{
-	height:	100%;
+	height:	calc(100% - 10px);
 	width: calc(100% - 30px);
 	border: none;
 	display: inline-block;
