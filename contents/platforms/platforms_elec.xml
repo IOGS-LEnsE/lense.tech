@@ -1,0 +1,21 @@
+<Platforms>
+	<Item>
+		<Title>TUNIS Board</Title>
+		<Type>GitHub</Type>
+		<Description>A pedagogic platform developed for Signal Processing and DC motor control, with a Nucleo board.</Description>
+		<Illustration>carte_TUNIS.png</Illustration>
+		<Url>https://iogs-lense-platforms.github.io/tunis-board/</Url>
+		<Ressources>
+			<Ressource>	
+				<TypeR>training</TypeR>
+				<Title>Nucleo Basics</Title>
+				<Url>https://iogs-lense-training.github.io/nucleo-basics/</Url>	
+			</Ressource>
+			<Ressource>	
+				<TypeR>training</TypeR>
+				<Title>Nucleo Advanced</Title>
+				<Url>https://iogs-lense-training.github.io/nucleo-advanced/</Url>	
+			</Ressource>
+		</Ressources>
+	</Item>
+</Platforms>

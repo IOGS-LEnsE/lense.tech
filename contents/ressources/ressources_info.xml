@@ -1,0 +1,18 @@
+<Document>
+	<Informations>
+		<Title>Ressources</Title>
+		<Description>Pedagogic ressources for engineers.</Description>
+		
+		<Descriptors>
+			<Descriptor>
+				<Type>GitHub</Type>
+				<Desc>Most of the available ressources are described and documented in the GitHub organization:</Desc> 
+				<Link>
+					<Url>https://github.com/IOGS-LEnsE-ressources</Url>
+					<Name>IOGS-LEnsE-ressources</Name>
+				</Link>
+			</Descriptor>
+		</Descriptors>
+		
+	</Informations>
+</Document>

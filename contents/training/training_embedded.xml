@@ -1,0 +1,31 @@
+<Platforms>
+	<Item>
+		<Title>Nucleo Basics</Title>
+		<Type>GitHub</Type>
+		<Description>Nucleo Basics is a complete set of tutorials to learn the basics of Nucleo board (STM32) programmation with the MBED free open source IoT operating system.</Description>
+		<Illustration></Illustration>
+		<Url>https://iogs-lense-training.github.io/nucleo-basics/</Url>
+		<Ressources>
+		</Ressources>
+	</Item>
+	<Item>
+		<Title>Nucleo Advanced</Title>
+		<Type>GitHub</Type>
+		<Description>Nucleo Advanced is a complete set of tutorials to learn advanced use of microcontrollers for signal processing and digital control. Tutorials are based on Nucleo board (STM32) programmation with the MBED free open source IoT operating system.</Description>
+		<Illustration></Illustration>
+		<Url>https://iogs-lense-training.github.io/nucleo-advanced/</Url>
+		<Ressources>
+		</Ressources>
+	</Item>
+	<Item>
+		<Title>Acquisition GUI</Title>
+		<Type>GitHub</Type>
+		<Description>Acquisition GUI is a complete tutorial to develop a graphical user interface based on PyQt6 in Python to collect data using an RS232 communication protocol from an acquisition home-made device.</Description>
+		<Illustration></Illustration>
+		<Url>https://iogs-lense-training.github.io/interface-acquisition-gui/</Url>
+		<Ressources>
+		</Ressources>
+	</Item>	
+	
+	
+</Platforms>

@@ -1,0 +1,21 @@
+<Platforms>
+	<Item>
+		<Title>Camera Interfaces (Basler, IDS...)</Title>
+		<Type>GitHub</Type>
+		<Description>Future engineers in photonics have to develop softwares including industrial cameras. This link provides Python drivers and graphical elements (PyQt6) for Basler and IDS camera.</Description>
+		<Illustration>carte_TUNIS.png</Illustration>
+		<Url>https://iogs-lense-ressources.github.io/camera-gui/</Url>
+		<Ressources>
+			<Ressource>	
+				<TypeR>training</TypeR>
+				<Title>Nucleo Basics</Title>
+				<Url>https://iogs-lense-training.github.io/nucleo-basics/</Url>	
+			</Ressource>
+			<Ressource>	
+				<TypeR>training</TypeR>
+				<Title>Nucleo Advanced</Title>
+				<Url>https://iogs-lense-training.github.io/nucleo-advanced/</Url>	
+			</Ressource>
+		</Ressources>
+	</Item>
+</Platforms>

@@ -4,4 +4,4 @@ Photonics A:phtA:
 Photonics B:phtB:
 Analog Electronics:analog:
 Embeded Systems:embedded:
-Computer Intefaces:interface:
+Computer Intefaces:interfaces:

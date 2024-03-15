@@ -23,12 +23,4 @@
 			</Ressource>
 		</Ressources>
 	</Item>
-	<Item>
-		<Title>Test</Title>
-		<Type>GitHub</Type>
-		<Description>Bla bla bla bla bla</Description>
-		<Illustration></Illustration>
-		<Url>https://iogs-lense-platforms.github.io/machine-vision/</Url>
-		<Others></Others>
-	</Item>
 </Platforms>
