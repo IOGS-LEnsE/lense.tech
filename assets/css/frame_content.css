@@ -97,6 +97,10 @@ body {
 	flex-flow: column wrap;
 	width: calc(100%-10px);	
 }
+
+.sub-link-desc-with-img{
+	width: 450px;	
+}
 .sub-link-desc a{
 	text-decoration: none;
 	padding-left: 10px;
@@ -147,27 +151,7 @@ p.desc{
 	margin-left: 50px;
 	margin-top: 10px;
 }
-a.sub-ressources{
-	background: var(--ressources);
-	padding: 2px 10px 2px 10px;
-	margin-left: 10px;
-	margin-top: 2px;
-	border-radius: 5px;
-	list-style: none;
-	text-decoration: none;
-	color: white;	
-	font-size: 0.6em;
-}
-a.sub-ressources:hover{
-	background: var(--ressources-light);
-}
 
-.icon::before {
-/* removed font- based rules */
-	display: inline-block;
-	text-rendering: auto;
-	-webkit-font-smoothing: antialiased;
-}
 /* Inside link of informations */
 a.link {
 	font-family: system-ui;
@@ -177,6 +161,23 @@ a.link {
 	padding: 2px 10px 2px 10px;
 	border-radius: 10px;
 }
+
+/* Inside link of informations */
+a.link-sub {
+	font-family: system-ui;
+	font-weight: normal;
+	font-size: 0.9em;
+	text-decoration: none;
+	padding: 2px 10px 2px 10px;
+	margin: 2px;
+	border-radius: 10px;
+}
+a.link-sub::before {
+	font-family: "Font Awesome 6 Free";
+	content: "\f06e \00a0\00a0";		
+}
+
+
 a.git::before {
 	/* using style CSS custom property */
 	font: var(--fa-font-brands);

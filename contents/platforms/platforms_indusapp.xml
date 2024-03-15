@@ -1,22 +1,23 @@
 <Platforms>
 	<Item>
 		<Title>Machine Vision</Title>
-		<Description>Bla bla bla bla bla</Description>
+		<Type>GitHub</Type>
+		<Description>A pedagogic platform developed for Machine Vision labworks and projects of students.</Description>
 		<Illustration>machine-vision.png</Illustration>
 		<Url>https://iogs-lense-platforms.github.io/machine-vision/</Url>
 		<Ressources>
 			<Ressource>	
-				<Type>ressources</Type>
+				<TypeR>ressources</TypeR>
 				<Title>Cameras GUI</Title>
 				<Url>https://iogs-lense-ressources.github.io/camera-gui/</Url>			
 			</Ressource>
 			<Ressource>	
-				<Type>training</Type>
+				<TypeR>training</TypeR>
 				<Title>Nucleo Basics</Title>
 				<Url>https://iogs-lense-training.github.io/nucleo-basics/</Url>			
 			</Ressource>
 			<Ressource>	
-				<Type>training</Type>
+				<TypeR>training</TypeR>
 				<Title>Python GUI</Title>
 				<Url>#</Url>
 			</Ressource>
@@ -24,6 +25,7 @@
 	</Item>
 	<Item>
 		<Title>Test</Title>
+		<Type>GitHub</Type>
 		<Description>Bla bla bla bla bla</Description>
 		<Illustration></Illustration>
 		<Url>https://iogs-lense-platforms.github.io/machine-vision/</Url>
