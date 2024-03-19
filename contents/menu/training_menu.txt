@@ -3,4 +3,4 @@ Training:return:
 Photonics A:phtA:
 Photonics B:phtB:
 Embedded Systems:embedded:
-Python for Physicians:python:
+Python for Science:python:
