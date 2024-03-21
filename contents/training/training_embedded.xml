@@ -1,4 +1,4 @@
-<Platforms>
+<Training>
 	<Item>
 		<Title>Nucleo Basics</Title>
 		<Type>GitHub</Type>
@@ -25,7 +25,5 @@
 		<Url>https://iogs-lense-training.github.io/interface-acquisition-gui/</Url>
 		<Ressources>
 		</Ressources>
-	</Item>	
-	
-	
-</Platforms>
+	</Item>		
+</Training>
