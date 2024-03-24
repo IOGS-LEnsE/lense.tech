@@ -2,5 +2,6 @@ MenuName:link:
 Training:return:
 Photonics A:phtA:
 Photonics B:phtB:
+Images:images:
 Embedded Systems:embedded:
 Python for Science:python:

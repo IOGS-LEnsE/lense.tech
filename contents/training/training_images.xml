@@ -1,0 +1,11 @@
+<Training>
+	<Item>
+		<Title>Images processing / Basics</Title>
+		<Type>GitHub</Type>
+		<Description>First steps in image processing with Python and OpenCV</Description>
+		<Illustration></Illustration>
+		<Url>https://iogs-lense-training.github.io/image-processing/</Url>
+		<Ressources>
+		</Ressources>
+	</Item>
+</Training>
