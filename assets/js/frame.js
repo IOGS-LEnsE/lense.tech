@@ -345,7 +345,6 @@ function processSubItems(page, subpage, subLinkDesc, item){
 		var title = subItem.querySelector("Title").textContent;
 		var url = subItem.querySelector("Url").textContent;
 		var type = subItem.querySelector("TypeR").textContent;
-		console.log(type);
 
 		// Create the anchor element with class "link"
 		anchorD[j] = document.createElement("a");
@@ -357,7 +356,6 @@ function processSubItems(page, subpage, subLinkDesc, item){
 		anchorD[j].addEventListener("mouseenter", function( event ) { 
 			type = getTypeFromClass(event.target);
 			event.target.style.background = document.documentElement.style.getPropertyValue('--'+type+'-light');
-		  console.log('Anch '+type);
 		}, false);
 		anchorD[j].addEventListener("mouseleave", function( event ) {  
 			type = getTypeFromClass(event.target); 
