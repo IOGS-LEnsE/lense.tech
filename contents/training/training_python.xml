@@ -8,4 +8,13 @@
 		<Ressources>
 		</Ressources>
 	</Item>
+	<Item>
+		<Title>Graphical Interface / PyQt6</Title>
+		<Type>GitHub</Type>
+		<Description>Introduction to GUI with PyQt6 / step by step</Description>
+		<Illustration></Illustration>
+		<Url>https://iogs-lense-training.github.io/python-pyqt-gui/</Url>
+		<Ressources>
+		</Ressources>
+	</Item>
 </Training>
