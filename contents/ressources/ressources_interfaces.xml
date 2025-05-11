@@ -6,16 +6,21 @@
 		<Illustration></Illustration>
 		<Url>https://iogs-lense-ressources.github.io/camera-gui/</Url>
 		<Ressources>
+		</Ressources>
+	</Item>
+	<Item>
+		<Title>Aberrations Labwork GUI (Zygo)</Title>
+		<Type>GitHub</Type>
+		<Description>GUI to control a Zygo interferometer and process images of interferences.</Description>
+		<Illustration></Illustration>
+		<Url>https://iogs-lense-ressources.github.io/aberrations-gui/</Url>
+		<Ressources>
 			<Ressource>	
 				<TypeR>training</TypeR>
-				<Title>Nucleo Basics</Title>
-				<Url>https://iogs-lense-training.github.io/nucleo-basics/</Url>	
-			</Ressource>
-			<Ressource>	
-				<TypeR>training</TypeR>
-				<Title>Nucleo Advanced</Title>
-				<Url>https://iogs-lense-training.github.io/nucleo-advanced/</Url>	
+				<Title>Python PyQt GUI</Title>
+				<Url>https://iogs-lense-training.github.io/python-pyqt-gui/</Url>	
 			</Ressource>
 		</Ressources>
 	</Item>
+	
 </Platforms>
